@@ -6,6 +6,7 @@ With new accessibility guidelines, it has become necessary to correctly tag the 
 This thesis template was made by Dr. Evan Linck (tagging+accessibility and table formatting) and Dr. Roark Habegger (structure, template creation, unicode version of physics.tex, AAS Journal commands/bibliography, instructions).
 
 It derives from the following old templates which do not meet the accessibility standards but were very useful in constructing this template. 
+- [https://github.com/willb/wi-thesis-template]
 
 The fake paper and text utilized in this template were generated with Microsoft Copilot. LaTeX code and compatibility was not generated with AI, unless people posted AI code to stack overflow and we got it from there.
 
