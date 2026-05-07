@@ -1,0 +1,82 @@
+% !TEX root = main.tex
+% Math - some things from physics package need to be redefined with \sym*f for compatibility with unicode-math and accessible pdfs.
+% For commands rewritten by some packages, useful to have \AtBeginDocument to ensure implementation actually occurs
+% \AtBeginDocument{\renewcommand{\mathrm}[1]{\symup{#1}}}
+\AtBeginDocument{\renewcommand{\mathbf}[1]{\symbf{#1}}}
+\newcommand{\diffd}{\symup{d}}
+\AtBeginDocument{\renewcommand{\div}{ \symbf{\nabla} \cdot }}
+\newcommand{\grad}{ \symbf{\nabla} }
+\newcommand{\gradient}{ \symbf{\nabla} }
+\newcommand{\curl}{ \symbf{\nabla} \times } 
+\newcommand{\vdot}{ \cdot }
+
+\DeclareDocumentCommand\crossproduct{}{\symbf\times} % Vector cross product symbol
+\DeclareDocumentCommand\cross{}{\crossproduct} % Shorthand for \crossproduct
+\DeclareDocumentCommand\cp{}{\crossproduct} % Shorthand for \crossproduct
+
+\DeclareMathOperator{\sech}{sech}
+% Unit vector
+\DeclareDocumentCommand\vectorunit{ s m }{\IfBooleanTF{#1}{\boldsymbol{\hat{#2}}}{\symbf{\hat{#2}}}} % Unit vector [star for Greek and italic Roman]
+\DeclareDocumentCommand\vu{}{\vectorunit} % Shorthand for \vectorunit
+
+
+\DeclareDocumentCommand\vectorbold{ s m }{\IfBooleanTF{#1}{\boldsymbol{#2}}{\symbf{#2}}} % Vector bold [star for Greek and italic Roman]
+\DeclareDocumentCommand\vb{}{\vectorbold} % Shorthand for \vectorbold
+
+% \AtBeginDocument{\newcommand{\div}{ \symbf{\nabla} \cdot } }
+% \AtBeginDocument{\newcommand{\grad}{ \symbf{\nabla} } }
+% \AtBeginDocument{\newcommand{\curl}{ \symbf{\nabla} \times } }
+% \AtBeginDocument{\newcommand{\vdot}{ \cdot } }
+
+% \AtBeginDocument{\newcommand{\mathbf}[1]{\symbf{#1}}}
+
+%derivative command from physics package 
+\DeclareDocumentCommand\derivative{ s o m g d() }
+{ % Total derivative
+	% s: star for \flatfrac flat derivative
+	% o: optional n for nth derivative
+	% m: mandatory (x in df/dx)
+	% g: optional (f in df/dx)
+	% d: long-form d/dx(...)
+	\IfBooleanTF{#1}
+	{\let\fractype\flatfrac}
+	{\let\fractype\frac}
+	\IfNoValueTF{#4}
+	{
+		\IfNoValueTF{#5}
+		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#5\argclose)}
+	}
+	{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2}{}{^{#2}}}}
+}
+\DeclareDocumentCommand\dv{}{\derivative} % Shorthand for \derivative
+
+% Partial Derivative command from phyiscs
+\DeclareDocumentCommand\partialderivative{ s o m g g d() }
+{ % Partial derivative
+	% s: star for \flatfrac flat derivative
+	% o: optional n for nth derivative
+	% m: mandatory (x in df/dx)
+	% g: optional (f in df/dx)
+	% g: optional (y in d^2f/dxdy)
+	% d: long-form d/dx(...)
+	\IfBooleanTF{#1}
+	{\let\fractype\flatfrac}
+	{\let\fractype\frac}
+	\IfNoValueTF{#4}
+	{
+		\IfNoValueTF{#6}
+		{\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#6\argclose)}
+	}
+	{
+		\IfNoValueTF{#5}
+		{\fractype{\partial \IfNoValueTF{#2}{}{^{#2}} #3}{\partial #4\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\partial^2 #3}{\partial #4 \partial #5}}
+	}
+}
+\DeclareDocumentCommand\pderivative{}{\partialderivative} % Shorthand for \partialderivative
+\DeclareDocumentCommand\pdv{}{\partialderivative} % Shorthand for \partialderivative
+
+\DeclareDocumentCommand\poissonbracket{ l m m }{\braces#1{\lbrace}{\rbrace}{#2,#3}} % Poisson bracket [same as anti-commutator]
+\DeclareDocumentCommand\pb{}{\poissonbracket} % Shorthand for \poissonbracket

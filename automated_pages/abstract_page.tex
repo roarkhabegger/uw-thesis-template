@@ -1,0 +1,23 @@
+\fancyhf{} % clear all header and footer fields
+\fancyhead[RO,R]{\thepage} %RO=right odd, RE=right even
+\renewcommand{\headrulewidth}{0pt}
+
+% Remember these commands, like \thesistitle, should be set in the base.tex file
+\begin{center}
+    \Large
+    \textbf{\thesistitle} \\
+    \large
+    \thesissubtitle
+    
+    \vspace{0.4cm}
+    \textbf{\myname} 
+    
+    \vspace{0.4cm}
+    Under the supervision of \advisor \\
+    At the University of Wisconsin-Madison\\
+    
+    \vspace{0.9cm}
+    \textbf{Abstract}
+\end{center}
+
+\input{src/abs}

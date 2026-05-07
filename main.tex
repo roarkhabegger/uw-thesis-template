@@ -1,0 +1,103 @@
+% This template is compatible with 2026 accessibility standards. Change compiler to LuaLateX, Tex version should be 2025, including pdf tagging. To use this template, you must set the compiler to LuaLateX and use 2025 Tex version. The Document Metadata kernel command tagging must be set to "on" for your final version, but it takes a long time to compile. You can check if it worked using a tool like verapdf (https://verapdf.org/). 
+
+\DocumentMetadata{
+  tagging = on,
+  lang = en,
+  pdfstandard = ua-2,
+  pdfstandard = a-4f, % optional archival standard
+  tagging-setup = {math/setup={mathml-AF,mathml-SE},
+    extra-modules={verbatim-mo},
+    table/header-rows=1},
+    testphase={phase-III,math,table}}
+
+\documentclass[12pt]{report}
+
+
+
+\usepackage{lipsum}
+\usepackage{luacode}
+\usepackage{fontspec}
+\setmainfont{CMU Serif}[RawFeature=+fixbib, Renderer=Node]
+
+
+% \usepackage{physics}
+\usepackage{unicode-math} %amsmath,amssymb are not compatible with accessible pdfs. Must use unicode-math instead. The biggest change I found was \mathrm had to become \symrm.
+\setmathfont{Latin Modern Math} 
+
+
+
+
+\usepackage{graphicx}
+
+\usepackage{rotating}
+
+\usepackage[authoryear,round]{natbib}
+\usepackage{float}
+\usepackage[width=156mm,top=35mm,bottom=25.4mm,bindingoffset=0mm]{geometry} %Binding offset useful for printing for a book copy
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\pagestyle{fancyplain}% <- use fancyplain instead fancy
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{15pt}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage[pdfa,colorlinks=true,linkcolor=black,citecolor=blue]{hyperref}
+
+
+\input{defs.tex}	
+\input{src/base}
+
+
+\newcommand{\tbd}[1][1]{{\color{red}#1}}
+\setcounter{secnumdepth}{3} %Change this number to affect how deep numbering goes (i.e., with a depth of 1, sections recieve a number but subsections do not recieve a number)
+\setcounter{tocdepth}{1} %Change how deep the TOC shows material. 1 shows sections and not subsections
+
+\usepackage{threeparttable}
+
+\usepackage{tagpdf}
+
+%To change the output of these commands, see sections/my_information.tex
+\title{\thesistitle: \thesissubtitle}
+\author{\myname}
+\date{\examdate}
+
+\begin{document}
+
+\pagenumbering{roman} %Roman numeral frontmatter required by UW-Madison
+
+%automated_pages contains formatting code. To change text of abstract/dedication/title/acks/etc., see my_information.tex and other .tex files in sections folder
+\input{automated_pages/titlepage}
+\input{automated_pages/copyright_page}
+\input{automated_pages/dedication_page}
+\input{automated_pages/abstract_page}
+\input{automated_pages/acks_page}
+
+\tableofcontents
+
+\listoffigures 
+
+\listoftables
+
+\doublespacing %Main text must be double spaced for UW-Madison
+
+\pagenumbering{arabic} %Switch to arabic numbering required here by UW-Madison
+
+%
+\include{src/intro}
+
+% \include{paper1/paper1.tex}
+
+\include{src/conc}
+
+
+
+\singlespacing %Bibliography can be single spaced for UW-Madison Submission
+
+\bibliographystyle{aasjournal}
+\bibliography{ref}
+
+\end{document}
