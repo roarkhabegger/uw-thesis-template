@@ -1,7 +1,9 @@
 # uw-thesis-template
 LaTeX Template for University of Wisconsin-Madison Doctoral Thesis
 
-With new accessibility guidelines, it has become necessary to correctly tag the final thesis pdf. This tagging requires LuaLaTeX, unicode-math, and other restrictions from general LaTeX packages.
+Also available on Overleaf at [https://www.overleaf.com/read/hknhpnkymwcn#bc8fb8]
+
+With new accessibility guidelines, it has become necessary to correctly tag the final thesis pdf. This tagging requires LuaLaTeX, unicode-math, and other restrictions from general LaTeX packages. 
 
 This thesis template was made by Dr. Evan Linck (tagging+accessibility and table formatting) and Dr. Roark Habegger (unicode version of physics.tex, AAS Journal commands/bibliography).
 
