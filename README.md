@@ -3,10 +3,12 @@ LaTeX Template for University of Wisconsin-Madison Doctoral Thesis
 
 With new accessibility guidelines, it has become necessary to correctly tag the final thesis pdf. This tagging requires LuaLaTeX, unicode-math, and other restrictions from general LaTeX packages.
 
-This thesis template was made by Dr. Evan Linck (tagging+accessibility and table formatting) and Dr. Roark Habegger (structure, template creation, unicode version of physics.tex, AAS Journal commands/bibliography, instructions).
+This thesis template was made by Dr. Evan Linck (tagging+accessibility and table formatting) and Dr. Roark Habegger (unicode version of physics.tex, AAS Journal commands/bibliography).
 
 It derives from the following old templates which do not meet the accessibility standards but were very useful in constructing this template. 
 - [https://github.com/willb/wi-thesis-template]
+- Lizhou Sha's thesis
+- Old astronomy templates: [https://github.com/fourwood/thesis-tex], [https://www.overleaf.com/3417557469tbmsmmdgfsrq]
 
 The fake paper and text utilized in this template were generated with Microsoft Copilot. LaTeX code and compatibility was not generated with AI, unless people posted AI code to stack overflow and we got it from there.
 
